@@ -25,13 +25,29 @@ namespace LinqExercise
 
             //Print the Sum and Average of numbers
 
+            //Console.WriteLine(numbers.Sum());
+            //Console.WriteLine(numbers.Average());
+
             //Order numbers in ascending order and decsending order. Print each to console.
+
+            //numbers.OrderBy(num => num).ToList().ForEach(x => Console.WriteLine(x));
+            //numbers.OrderByDescending(num => num).ToList().ForEach(x => Console.WriteLine(x));
 
             //Print to the console only the numbers greater than 6
 
+            //numbers.Where(x => x > 6).ToList().ForEach(x => Console.WriteLine(x));
+
             //Order numbers in any order (acsending or desc) but only print 4 of them **foreach loop only!**
 
+            //foreach (var item in numbers.OrderBy(x => x).Take(4))
+            //{
+            //    Console.WriteLine(item);
+            //}
+
             //Change the value at index 4 to your age, then print the numbers in decsending order
+
+            //numbers[4] = 25;
+            //numbers.OrderByDescending(num => num).ToList().ForEach(x => Console.WriteLine(x));
 
             // List of employees ***Do not remove this***
             var employees = CreateEmployees();
@@ -39,8 +55,20 @@ namespace LinqExercise
             //Print all the employees' FullName properties to the console only if their FirstName starts with a C OR an S.
             //Order this in acesnding order by FirstName.
 
+            //employees.Where(employee => employee.FirstName[0] == 'C' || employee.FullName[0] == 'S')
+            //    .OrderBy(x => x.FirstName)
+            //    .ToList()
+            //    .ForEach(x => Console.WriteLine(x.FullName));
+
             //Print all the employees' FullName and Age who are over the age 26 to the console.
             //Order this by Age first and then by FirstName in the same result.
+
+           employees.Where(x => x.Age > 26)
+                .OrderBy(x => x.Age)
+                .ThenBy(x => x.Age)
+                .ToList()
+                .ForEach(x => Console.WriteLine($"{x.FullName} {x.Age}"));
+
 
             //Print the Sum and then the Average of the employees' YearsOfExperience
             //if their YOE is less than or equal to 10 AND Age is greater than 35
